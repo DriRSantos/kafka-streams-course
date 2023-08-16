@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>streams-starter-project</module>
+        <module>word-count</module>
     </modules>
 
     <properties>
