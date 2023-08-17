@@ -48,5 +48,15 @@ public class WordCountApp {
 
         KafkaStreams streams = new KafkaStreams(wordCountApp.createTopology(), props);
         streams.start();
+
+        // print the topology every 10 seconds for learning purposes
+        while(true){
+            streams.metadataForLocalThreads().forEach(data -> System.out.println(data));
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                break;
+            }
+        }
     }
 }
