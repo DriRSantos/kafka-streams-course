@@ -38,8 +38,8 @@ public class WordCountApp {
     public static void main(String[] args) {
 
         Properties props = new Properties();
-        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "word-count-app");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "wordcount-application");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "[::1]:9092");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_DOC, "earliest");
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
@@ -48,6 +48,9 @@ public class WordCountApp {
 
         KafkaStreams streams = new KafkaStreams(wordCountApp.createTopology(), props);
         streams.start();
+
+       // shutdown hook to correctly close the streams application
+        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
 
         // print the topology every 5 seconds for learning purposes
         while(true){
@@ -58,7 +61,5 @@ public class WordCountApp {
                 break;
             }
         }
-        // Add shutdown hook to stop the Kafka Streams threads.
-        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
     }
 }
