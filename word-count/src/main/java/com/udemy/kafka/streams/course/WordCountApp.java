@@ -8,6 +8,9 @@ import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Properties;
 
@@ -35,7 +38,7 @@ public class WordCountApp {
         return builder.build();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "wordcount-application");
@@ -43,6 +46,9 @@ public class WordCountApp {
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_DOC, "earliest");
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+        // create directory to stop error lock as state directory Windows
+        Path stateDirectory = Files.createTempDirectory("kafka-streams");
+        props.put(StreamsConfig.STATE_DIR_CONFIG, stateDirectory.toAbsolutePath().toString());
 
         WordCountApp wordCountApp = new WordCountApp();
 
