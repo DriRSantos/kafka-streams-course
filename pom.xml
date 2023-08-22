@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>word-count</module>
+        <module>favourite-colour</module>
     </modules>
 
     <properties>

@@ -48,3 +48,4 @@ java -jar <your jar here>.jar
 
 # list all topics that we have in Kafka (so we can observe the internal topics)
 bin/kafka-topics.sh --list --zookeeper localhost:2181
+ kafka-topics.sh --bootstrap-server [::1]:9092 --list
