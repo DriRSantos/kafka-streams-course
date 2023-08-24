@@ -70,14 +70,7 @@ public class FavouriteColour {
         // shutdown hook to correctly close the streams application
         Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
 
-        // print the topology every 5 seconds for learning purposes
-        while(true){
+        // print the topology
             streams.metadataForLocalThreads().forEach(data -> System.out.println(data));
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                break;
-            }
-        }
     }
 }
