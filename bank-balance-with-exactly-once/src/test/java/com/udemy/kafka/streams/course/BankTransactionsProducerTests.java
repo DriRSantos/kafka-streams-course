@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class BankTransactionsProducerTests {
     @Test
     public void newRandomTransactionsTests() {
+        // newRandomTransaction on Producer is private, change to public to make de tests
         ProducerRecord<String, String> record = BankTransactionsProducer.newRandomTransaction("john");
         String key = record.key();
         String value = record.value();

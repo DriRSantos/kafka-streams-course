@@ -16,6 +16,14 @@
             <artifactId>kafka-streams</artifactId>
             <version>3.5.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/connect-json -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>connect-json</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+
+
         <!-- to write the kafka producer -->
         <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
         <dependency>

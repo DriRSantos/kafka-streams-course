@@ -44,7 +44,7 @@ public class BankTransactionsProducer {
         }
         producer.close();
     }
-    public static ProducerRecord<String, String> newRandomTransaction(String name) {
+    private static ProducerRecord<String, String> newRandomTransaction(String name) {
         // creates an empty json {}
         ObjectNode transaction = JsonNodeFactory.instance.objectNode();
 

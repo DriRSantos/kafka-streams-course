@@ -54,8 +54,8 @@ public class FavouriteColour {
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "favorite-colour-app");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "[::1]:9092");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_DOC, "earliest");
-        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
-        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         // set cache to 0, just to show every step in the transformation
 //        props.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_DOC, "0");
 
@@ -71,6 +71,6 @@ public class FavouriteColour {
         Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
 
         // print the topology
-            streams.metadataForLocalThreads().forEach(data -> System.out.println(data));
+        streams.metadataForLocalThreads().forEach(data -> System.out.println(data));
     }
 }

@@ -18,7 +18,7 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
     --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
     --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
 
-# wsl
+# wsls
     kafka-console-consumer.sh --bootstrap-server [::1]:9092 \
     --topic bank-balance-exactly-once \
     --from-beginning \
@@ -26,4 +26,7 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
     --property print.key=true \
     --property print.value=true \
     --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
-    --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+    --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+
+# also lauch a consumer on bank-transactions topic
+    kafka-console-consumer.sh --bootstrap-server [::1]:9092 --topic bank-transactions --from-beginning
