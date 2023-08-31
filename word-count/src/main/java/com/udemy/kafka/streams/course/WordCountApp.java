@@ -15,7 +15,6 @@ import java.util.Arrays;
 import java.util.Properties;
 
 public class WordCountApp {
-
     public Topology createTopology(){
         StreamsBuilder builder = new StreamsBuilder();
         // 1 - get stream from Kafka
@@ -51,7 +50,6 @@ public class WordCountApp {
         props.put(StreamsConfig.STATE_DIR_CONFIG, stateDirectory.toAbsolutePath().toString());
 
         WordCountApp wordCountApp = new WordCountApp();
-
         KafkaStreams streams = new KafkaStreams(wordCountApp.createTopology(), props);
         streams.start();
 
