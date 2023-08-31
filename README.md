@@ -17,7 +17,7 @@ What was learned:
 ## Screenshots
 
 ### WordCountApp consumer, producer
-<img src="https://github.com/DriRSantos/kafka-streams-course/blob/main/images/wordcountapp-console-producer-consumer.jpg?raw=true" width="450" height="248">
+<img src="https://github.com/DriRSantos/kafka-streams-course/blob/main/images/wordcountapp-console-producer-consumer.png?raw=true" width="450" height="248">
 
 ### FavouriteColourApp consumer, producer
 <img src="https://github.com/DriRSantos/kafka-streams-course/blob/main/images/favorite-colors-app-consumer-producer.jpg?raw=true" width="450" height="248">
